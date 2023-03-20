@@ -1,25 +1,31 @@
 import  {gql}  from "apollo-server-express"
 export const typeDefs = gql`
 type Location{
-    # _id:ID!,
-    Country:String!,
-    Year:Int!,
-    Area:Int!,
-    Total_population:Int!,
+    Country:String,
+    Year:Int,
+    Area:Int,
+    Population:Int
   }
 
+input createLocationInput{
+    Country:String,
+    Year:Int,
+    Area:Int,
+    Population:Int
+}
 
 type Query {
-  getLocations: [Location!]!
+  getLocations: [Location]
   getLocation(id: ID!): Location!
 }
 
 
 type Mutation{
-  createLocation(Country:String!,Year:Int!,Area:Int!,Total_population:Int!): Location!
+  createLocation(createInput: createLocationInput): Location!
 }
 
   `
+
 
 
 

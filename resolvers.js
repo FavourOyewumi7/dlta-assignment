@@ -7,34 +7,35 @@ import { Location as LocationModel } from "./models/Location.js"
 export const resolver = {
     Query:{
            getLocation:async (_, { id })=> {
-            return await LocationModel.findById(id)
+            return await LocationModel.findById(_id)
           
 
           },
 
          getLocations:async ()=> {
-            // _, args,  { dataSources: { Infos } }
+            console.log('working')
             return await LocationModel.find()
-           // return  Infos.getInfos(args)}
+          
         
     },
     Mutation:{
-        createInfo:async(_, {Country, Year, Area, Total_population})=>{
-            const randomId = Math.random().toString().split('.')[1];
+        createLocation:async(_, {createInput: {Country, Year, Area, Population}})=>{
+            // const randomId = Math.random().toString().split('.')[1];
             const newLocation = new LocationModel({ 
-              _id: randomId,
-              Country: Country,
+              Country:Country,
               Year:Year,
               Area:Area,
-              Total_population:Total_population  
+              Population:Population 
+              
             })
             const res = await newLocation.save()
-            console.log(...res._doc)
+            console.log("PLease work in the name of Jesus")
+            console.log(res)
             return{
-              id:res.id,
+             id:res.id,
               ...res._doc
             }
-            //Infos.createInfo(args)
+        
         }
 
     }

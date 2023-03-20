@@ -1,20 +1,13 @@
 import  express from 'express';
 import { ApolloServer} from 'apollo-server-express';
+//import { ApolloServer } from 'apollo-server';
 import {resolver} from './resolvers.js';
 import {typeDefs} from './typeDefs.js';
 import mongoose from 'mongoose';
-//import { Info as InfoModel } from './models/Info.js';
-
-
-
-
-
 
 
 const starter =async()=>{
-    // const dataSources = () => ({
-    //     Infos: new Infos(InfoModel)
-    // })
+    
     const uri = "mongodb+srv://oyewumifavour65:Blackbullet7@oyewumi.u9trz15.mongodb.net/dlta_assignment?retryWrites=true&w=majority";
 
     try{
@@ -32,14 +25,7 @@ const starter =async()=>{
     app.listen(port, () => {
         console.log("starting the server"),
         console.log(`Check it out on https://localhost:${port} `)});
-   
-
-   
-
-
-    // const port = 8000;
-
-  
+ 
 }
 
 starter()
