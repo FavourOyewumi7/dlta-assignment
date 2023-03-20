@@ -1,9 +1,8 @@
-import  express from 'express';
-import { ApolloServer} from 'apollo-server-express';
-//import { ApolloServer } from 'apollo-server';
-import {resolver} from './resolvers.js';
-import {typeDefs} from './typeDefs.js';
-import mongoose from 'mongoose';
+const express = require("express");
+const {ApolloServer} = require('apollo-server-express');
+const resolvers = require('./resolvers')
+const typeDefs = require('./typeDefs')
+const mongoose = require("mongoose")
 
 
 const starter =async()=>{
@@ -18,17 +17,20 @@ const starter =async()=>{
         console.log(err)
     }
     const app = express();
-    const server = new ApolloServer({ typeDefs, resolver});
+    const server = new ApolloServer({ typeDefs, resolvers});
     await server.start()
-    server.applyMiddleware({ app, path: '/' })
-    const port = 8080
+    server.applyMiddleware({app: app})
+    const port = 8000
+    app.use((req,res)=>{
+        res.send("Hello from express")
+    })
     app.listen(port, () => {
-        console.log("starting the server"),
-        console.log(`Check it out on https://localhost:${port} `)});
+        console.log("starting the server")
+        });
  
 }
 
-starter()
+starter();
 
 
 

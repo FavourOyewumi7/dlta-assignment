@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -19,6 +18,11 @@
   },
   "homepage": "https://github.com/FavourOyewumi7/dlta-assignment#readme",
   "dependencies": {
-    "apollo-server": "^3.12.0"
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.3",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "apollo-server": "^3.12.0",
+    "babel": "^6.23.0"
   }
 }

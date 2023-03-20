@@ -1,45 +1,51 @@
-//import Infos from "./datasources/Info";
-import { Location as LocationModel } from "./models/Location.js"
 
+const {Location} = require('./Location.js')
 
-
-
-export const resolver = {
+module.exports = {
     Query:{
-           getLocation:async (_, { id })=> {
-            return await LocationModel.findById(_id)
+     
+           getLocation:async (_, { _id })=> {
+            return await Location.findById(_id)
           
 
           },
 
          getLocations:async ()=> {
             console.log('working')
-            return await LocationModel.find()
+            return await Location.find()
           
         
-    },
+    }
+  },
     Mutation:{
-        createLocation:async(_, {createInput: {Country, Year, Area, Population}})=>{
-            // const randomId = Math.random().toString().split('.')[1];
-            const newLocation = new LocationModel({ 
-              Country:Country,
-              Year:Year,
-              Area:Area,
-              Population:Population 
+        createLocation:async(parent,args,context,info)=>{
+          
+            const {country, year, area, population} = args
+            const newLocation = new Location({ 
+              country,
+              year,
+              area,
+              population
               
             })
-            const res = await newLocation.save()
-            console.log("PLease work in the name of Jesus")
-            console.log(res)
-            return{
-             id:res.id,
-              ...res._doc
-            }
+            
+            
+           
+            return await newLocation.save()
+            .then(result =>{
+              return {...result._doc}
+
+            }).catch (err => {
+              console.error(err)
+          })
+            
+          
         
         }
 
     }
     }
 
-}
+
+
 
