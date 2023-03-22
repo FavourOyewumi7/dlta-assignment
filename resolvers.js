@@ -41,6 +41,24 @@ module.exports = {
             
           
         
+        },
+
+        editLocation: async(_, {_id,country, year, area, population})=>{
+           
+            const updated = (await Location.updateOne({_id:_id}, { 
+              country:country,
+              year:year,
+              area:area,
+              population:population
+              
+            })).modifiedCount
+            return updated
+          
+          }
+        ,
+        deleteLocation:async(_, {_id})=>{
+          const wasDeleted = (await Location.deleteOne({_id:_id})).deletedCount
+          return wasDeleted
         }
 
     }

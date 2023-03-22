@@ -19,6 +19,12 @@ type Mutation{
     year:Int,
     area:Int,
     population:Int): Location
+
+editLocation(_id:ID!,country:String,
+    year:Int, 
+    area:Int,
+    population:Int ): Boolean
+deleteLocation(_id:ID!): Boolean
 }
  `
 
