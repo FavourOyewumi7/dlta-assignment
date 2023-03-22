@@ -1,6 +1,6 @@
 # dlta-assignment
 
-query and mutate data from a MongoDB server through a graphql api
+query and mutate data from a MongoDB server through a CRUD graphql api
 Used the following tools
 
 Apollo-server-express
